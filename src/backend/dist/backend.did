@@ -1,0 +1,20 @@
+type ContactSubmission = 
+ record {
+   email: text;
+   id: nat;
+   isProcessed: bool;
+   name: text;
+   phone: text;
+   requirement: text;
+ };
+service : {
+  deleteProcessed: () -> ();
+  deleteSubmission: (id: nat) -> ();
+  getSubmissionCount: (isProcessed: bool) -> (nat) query;
+  getSubmissions: (isProcessed: bool) -> (vec ContactSubmission) query;
+  markAllProcessed: () -> ();
+  markAsProcessed: (id: nat) -> ();
+  searchByEmail: (email: text) -> (vec ContactSubmission) query;
+  submitContactForm: (name: text, phone: text, email: text, requirement:
+   text) -> (nat);
+}
